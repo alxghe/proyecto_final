@@ -11,9 +11,9 @@
 
 <body>
   <section>
-    <nav class="navbar navbar-expand-lg" style="background-color: #8AB6D6;">
-      <div class="container-fluid" style="background-color: #8AB6D6;">
-        <a class="navbar-brand" href="#">Encuentra el apoyo que necesitas</a>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#"><span style="color: rgb(64, 125, 105);">Psico</span>Lab</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
           aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,82 +33,118 @@
               <a class="nav-link" href="#">Especialistas</a>
             </li>
           </ul>
-          <span class="navbar-text" style="color: black;">
+          <span class="navbar-text" style="color: rgb(215, 218, 182);">
             La vida es el mayor regalo que podemos tener
           </span>
         </div>
       </div>
     </nav>
   </section>
-  
-    <header>
-      <div class="container-fluid my-2">
 
-      <div class="row text-center"style="height: 400px;background-image: url('public/images/apo.jpeg'); background-position: center center; background-size: cover;  position: relative;">
-        <div
-        style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(129, 103, 103, 0.5); z-index: 1;">
-      </div>
-        <!--inicio row 1-->
-        <h6 style="color: #000000;">No estás solo en esto. Juntos, podemos construir un espacio de reflexión, crecimiento y conexión. Explora,
+  
+  <div class="container-fluid my-3">
+    <header class="background-header">
+      <div class="contenido d-block">
+        <div class="card"></div>
+        <h6 style="color: #f4f4f4;">No estás solo en esto. Juntos, podemos construir un espacio de reflexión,
+          crecimiento y conexión. Explora,
           aprende y comparte. Estamos aquí para ti.</h6>
-        <h1 class="display-2" style="font-weight: 800;">PSICOLAB</h1>
-        <p class="text-justify">En PSICOLAB, estamos aquí para acompañarte en tu viaje hacia el bienestar emocional.
+        <h1 class="display-2">PSICOLAB</h1>
+        <p class="text-justify">En PSICOLAB, estamos para acompañarte en tu viaje hacia el bienestar emocional.
           Sabemos que la vida puede presentar desafíos, y queremos ser un faro de apoyo y esperanza en tu camino.
 
           Aquí encontrarás recursos, información y una comunidad acogedora que entiende y valora tus experiencias. La
           salud mental es una prioridad, y estamos comprometidos a brindarte las herramientas y el apoyo necesario para
           fortalecer tu bienestar emocional.</p>
       </div>
+      </div>
     </header>
-    <main>
+  </div>
+
+  <main>
+    <section>
+      <div class="container">
+          <div class="row flex-column">
+              <div class="col mb-3">
+                  <div class="card h-100 shadow">
+                      <div class="card-body text-center"style="background-color: azure;">
+                          <p class="text-justify fw-bold fs-4">Historias de éxitos</p>
+                      </div>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="card shadow h-100 bg-cover bg-center"
+                      style="background-color: azure;">
+                      <div class="overlay"></div>
+                      <div class="card-body position-relative">
+                          <h5 class="card-title text-dark">Arsenal</h5>
+                          <p class="card-text text-dark">
+                              Disfruta de la gran cantidad de armas que te ofrecemos, consigue tus VALORANT points
+                              ahora para adquirir tu aspecto favorito en la tienda ahora.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  
+  
+  
+    </section>
+
+    <br>
     <section>
       <div class="row text-center align-items-center">
-        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
-          <div class="card" style="height: 200px;">
-            <p class="text-justify" style="font-weight: 500;font-size: large;">Historias de exitos</p>
-          </div>
-        </div>
-        <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8">
-          <div class="card shadow"
-            style="height: 200px;background-image: url('public/images/val_img_2.webp');background-position: center center; background-size: cover;  position: relative;">
-            <div 
-              style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(65, 61, 61, 0.5); z-index: 1;">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+          <div class="shadow" style=" background-size: cover; position: relative;">
+            <div
+              style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(129, 103, 103, 0.1); z-index: 1;">
             </div>
-            <div class="card-body" style="position: relative; z-index: 2;">
-              <h5 class="card-title" style="color: #fff1f1;">Arsenal</h5>
-              <p class="card-text" style="color: #ffdfdf;">
-                Disfruta de la gran cantidad de armas que te ofrecemos, consigue tus VALORANT points
-                ahora para
-                adquirir tu aspecto favorito en la tienda ahora.</p>
+            <div class="bg-body" style="position: relative; z-index: 2;">
+              <h4 class="text-bg-secondary" style="color: #4a3d3d;">CUÉNTANOS TU HISTORIA</h4>
+              <p class="" style="color: rgb(41, 39, 39);">Háblanos sobre todo aquello que te preocupa o molesta, siempre
+                es bueno tener un lugar donde desahogarse</p>
             </div>
+
+            <!-- Carrusel de Texto -->
+            <div id="textCarousel" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <!-- Diapositiva 1 -->
+                <div class="carousel-item active">
+                  <div class="carousel-text">
+                    <h3>Primera Historia</h3>
+                    <p>Texto de la primera historia.</p>
+                  </div>
+                </div>
+                <!-- Diapositiva 2 -->
+                <div class="carousel-item">
+                  <div class="carousel-text">
+                    <h3>Segunda Historia</h3>
+                    <p>Texto de la segunda historia.</p>
+                  </div>
+                </div>
+                <!-- Controles de Carrusel -->
+                <a class="carousel-control-prev" href="#textCarousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+                <a class="carousel-control-next" href="#textCarousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only"></span>
+                </a>
+              </div>
+            </div>
+            <!-- Fin del Carrusel de Texto -->
+
           </div>
         </div>
       </div>
-      <section>
-        <br>
-        <div class="row text-center align-items-center">
-          
-          <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-            <div class="shadow"
-              style="height: 400px;background-image: url('public/images/apo.jpeg');background-position: center center; background-size: cover;  position: relative;">
-              <div 
-                style="position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(129, 103, 103, 0.5); z-index: 1;">
-              </div>
-              <div class="bg-body" style="position: relative; z-index: 2;">
-                <h4 class="text-bg-secondary" style="color: #4a3d3d;">CUENTANOS TU HISTORIA</h4>
-                <p class="text-bg-dark" style="color: #ffdfdf;"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      </div>
-           
     </section>
-  </div>
   </main>
   <br>
-  <div class="row" style="background-color: #9c9c9c;">
+  <div class="row">
     <footer class="py-3 my-4 ">
       <ul class="nav justify-content-center border-bottom pb-3 mb-3">
         <li class="nav-item">
@@ -145,6 +181,12 @@
     </footer>
   </div>
   <script src="public/js/bootstrap.min.js"></script>
+ 
+  <!-- jQuery y Popper.js son requeridos por Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>
