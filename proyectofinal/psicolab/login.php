@@ -149,18 +149,63 @@ main{
     </style>
     <div class="container">
         <div class="box form-box">
+        <?php
+session_start();
+
+include_once('./include/dbconn.php');
+$database = new Connection();
+$db = $database->open();
+
+try {
+    if (isset($_POST['submit'])) {
+        $correo_electronico = trim($_POST['email']);
+        $nombre_usuario = trim($_POST['username']);
+        $contrasena = trim($_POST['password']);
+
+
+       if(!empty($correo_electronico)&& !empty($nombre_usuario) && !empty($contrasena)){
+        $get_password_query = $db->prepare("SELECT contrasena FROM usuarios WHERE correo_electronico = :correo_electronico");
+        $get_password_query->bindParam(':correo_electronico', $correo_electronico);
+        $get_password_query->execute();
+        $stored_password = $get_password_query->fetchColumn();
+
+         
+        if ($stored_password && password_verify($contrasena, $stored_password)) {
+            
+            $_SESSION['user'] = $correo_electronico;
+            
+            
+            header("Location: index.php");
+            exit();} else {
+            echo "<div class='message'>
+                    <p>Credenciales incorrectas</p>
+                  </div><br>";
+            }
+        }
+    }
+} catch (PDOException $e) {
+    echo "Error en la conexión" . $e->getMessage();
+} finally {
+    $database->close();
+}
+?>
+
             <header>Iniciar sesion</header>
             <form action=""method="post">
-                <div class="field input">
+            <div class="field input">
                     <label for="username">Nombre de usuario</label>
                     <input type="text"name="username"id="username" required>
+                </div>
+                <div class="field input">
+                    <label for="email">correo electronico</label>
+                    <input type="text"name="email"id="email" required>
                 </div>
 
                 <div class="field input">
                     <label for="password">Contraseña</label>
                     <input type="password"name="password"id="password" required>
                 </div>
-                <div class="field input">
+                <div class="field">
                     <input type="submit"class="btn" name="submit"value="login" required>
                 </div>
                 <div class="links">
