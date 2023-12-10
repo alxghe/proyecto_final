@@ -9,13 +9,7 @@
 </head>
 <body>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins',sans-serif;
-}
+
 body{
     background: #e3e9f7;
 }
@@ -149,6 +143,48 @@ main{
     </style>
     <div class="container">
         <div class="box form-box">
+
+        <?php
+include_once('./include/dbconn.php');
+$database = new Connection();
+$db = $database->open();
+try{
+
+if (isset($_POST['submit'])) {
+    $nombre = $_POST['username'];
+    $correo_electronico = $_POST['email'];
+    $edad = $_POST['age'];
+    $contrasena = $_POST['password'];
+
+    $verify_query = $db->prepare("SELECT correo_electronico FROM usuarios WHERE correo_electronico = :correo_electronico");
+    $verify_query->bindParam(':correo_electronico', $correo_electronico);
+    $verify_query->execute();
+
+    if ($verify_query->rowCount() != 0) {
+        echo "<div class='message'>
+                <p>Este correo electrónico ya está en uso</p>
+              </div><br>";
+        echo "<a href='javascript:self.history.back()'><button class='btn'>Regresar</button></a>";
+    } else {
+        $contrasena_cifrada = password_hash($contrasena,PASSWORD_DEFAULT);
+
+        $insert_query = $db->prepare("INSERT INTO usuarios (nombre, correo_electronico, edad, contrasena) VALUES (?, ?, ?, ?)");
+        $insert_query->bindParam(1, $nombre);
+        $insert_query->bindParam(2, $correo_electronico);
+        $insert_query->bindParam(3, $edad);
+        $insert_query->bindParam(4, $contrasena_cifrada);
+        $insert_query->execute();
+
+        header("Location: login.php");
+        exit();
+    }
+}}catch (PDOException $e){
+    echo "Error en la coneccion" . $e->getMessage();
+  }
+  $database->close();
+?>
+
+
             <header>Registrate</header>
             <form action=""method="post">
 
@@ -170,8 +206,8 @@ main{
                     <input type="password"name="password"id="password" required>
                 </div>
 
-                <div class="field input">
-                    <input type="submit"class="btn" name="submit"value="login" required>
+                <div class="field">
+                    <input type="submit"class="btn" name="submit"value="Registrarse" required>
                 </div>
 
                 <div class="links">
