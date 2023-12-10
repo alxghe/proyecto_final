@@ -11,11 +11,21 @@
 
 <body>
   <section>
+    <?php
+session_start();
+include_once('./include/dbconn.php');
+
+$database = new Connection();
+$db = $database->open();
+?>
+
     <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a class="navbar-brand" href="#"><span style="color: rgb(64, 125, 105);">Psico</span>Lab</a>
-        <button class="navbar-toggler" style="color: rgb(64, 125, 105); border: 1px solid white; background-color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler"
+          style="color: rgb(64, 125, 105); border: 1px solid white; background-color: white;" type="button"
+          data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false"
+          aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -33,12 +43,23 @@
               <a class="nav-link" href="#">Especialistas</a>
             </li>
           </ul>
+          <?php if (isset($_SESSION['user'])): ?>
+          <!-- Mostrar nombre de usuario si está autenticado -->
           <span class="navbar-text" style="color: rgb(215, 218, 182);">
-            La vida es el mayor regalo que podemos tener
+            Bienvenido,
+            <?php echo $_SESSION['user']; ?>
           </span>
+          <a class="nav-link" href="delete_account.php">Eliminar cuenta</a>
+          <a class="nav-link" href="#" onclick="confirmLogout()">Cerrar sesión</a>
+
+          <?php else: ?>
+          <!-- Mostrar botón de iniciar sesión si no está autenticado -->
+          <a class="nav-link" href="login.php">Iniciar sesión</a>
+          <?php endif; ?>
         </div>
       </div>
     </nav>
+
   </section>
 
 
@@ -187,8 +208,17 @@
     </footer>
   </div>
   <script src="public/js/bootstrap.min.js"></script>
+  <script>
+    function confirmLogout() {
+        var confirmLogout = confirm("¿Realmente quieres cerrar sesión?");
+        if (confirmLogout) {
+            window.location.href = "logout.php";
+        }
+    }
+</script>
 
   <!-- jQuery y Popper.js son requeridos por Bootstrap JS -->
+  
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
